@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 // function Header(props) {
 //  함수형 컴포넌트는 모든 attribute들이 매개변수로 전달
 //   console.log(props);
@@ -11,13 +12,16 @@ function Header({ title }) {
     </header>
   );
 }
+Header.propTypes = {
+  title: PropTypes.string,
+};
 
 function Nav({ topics }) {
   console.log("topics:", topics);
   return (
     <nav>
       <ol>
-        <li>
+        {/* <li>
           <a href="/read/1">html</a>
         </li>
         <li>
@@ -25,11 +29,19 @@ function Nav({ topics }) {
         </li>
         <li>
           <a href="/read/3">js</a>
-        </li>
+        </li> */}
+        {topics.map((topic) => (
+          <li key={topic.id}>
+            <a href={"/read/" + topic.id}>{topic.title}</a>
+          </li>
+        ))}
       </ol>
     </nav>
   );
 }
+Nav.propTypes = {
+  topics: PropTypes.array,
+};
 
 function Article({ title, body }) {
   return (
@@ -39,7 +51,10 @@ function Article({ title, body }) {
     </article>
   );
 }
-
+Article.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+};
 function App() {
   const topics = [
     { id: 1, title: "html", body: "html is ..." },
@@ -53,7 +68,6 @@ function App() {
       <Nav topics={topics}></Nav>
       {/* Article 컴포넌트에 title, body 속성 전달 */}
       <Article title="Welcome" body="Hello, Web"></Article>
-      <Article title="Hi" body="Hello, React"></Article>
     </div>
   );
 }
