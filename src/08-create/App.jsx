@@ -120,7 +120,7 @@ function App() {
           //  새 토픽을 topic에 추가
           //  매우 중요: state를 변경할 때는 반드시 상태변경 함수를 활용해야 함
           setTopics([...topics, newTopic]);
-          //   topics.push(newTopic); -> 사용하면 안됨
+          //   topics.push(newTopic); -> Anti-Pattern
           /*
             -> 상태를 직접 변경하면 React는 변경 사항을 감지하지 못할 수 있다.
 	        -> push는 배열을 직접 변경한다 
