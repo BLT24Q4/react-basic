@@ -118,9 +118,14 @@ function App() {
           const newTopic = { id: nextId, title: _title, body: _body };
 
           //  새 토픽을 topic에 추가
-          //    state를 변경할 때는 반드시 상태변경 함수를 활용해야 함
+          //  매우 중요: state를 변경할 때는 반드시 상태변경 함수를 활용해야 함
           setTopics([...topics, newTopic]);
           //   topics.push(newTopic); -> 사용하면 안됨
+          /*
+            -> 상태를 직접 변경하면 React는 변경 사항을 감지하지 못할 수 있다.
+	        -> push는 배열을 직접 변경한다 
+	        -> 상태 업데이트를 감지하지 못하고 컴포넌트를 다시 렌더링하지 않을 수 있다
+          */
           //    READ 모드로 이동
           //    선택된 article id, mode -> READ
           setMode("READ");
