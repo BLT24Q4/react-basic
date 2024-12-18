@@ -118,7 +118,15 @@ function App() {
           const newTopic = { id: nextId, title: _title, body: _body };
 
           //  새 토픽을 topic에 추가
+          //    state를 변경할 때는 반드시 상태변경 함수를 활용해야 함
           setTopics([...topics, newTopic]);
+          //   topics.push(newTopic); -> 사용하면 안됨
+          //    READ 모드로 이동
+          //    선택된 article id, mode -> READ
+          setMode("READ");
+          setId(nextId);
+          //    nextId 갱신
+          setNextId(nextId + 1);
         }}
       ></Create>
     );
