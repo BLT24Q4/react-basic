@@ -28,31 +28,6 @@ Header.propTypes = {
 // function Nav(props) {
 function Nav({ topics, onChangeMode }) {
   //  topics, onChangeMode
-  /*
-  const lis = [];
-  for (let i = 0; i < topics.length; i++) {
-    let t = topics[i];
-    lis.push(
-      <li key={t.id}>
-        <a
-          id={t.id}
-          href={"/read/" + t.id}
-          onClick={(event) => {
-            event.preventDefault(); // 기본 동작 막기
-            onChangeMode(event.target.id);
-          }}
-        >
-          {t.title}
-        </a>
-      </li>
-    );
-  }
-  return (
-    <nav>
-      <ol>{lis}</ol>
-    </nav>
-  );
-  */
   return topics.map((topic) => (
     <li key={topic.id}>
       <a
